@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500&display=swap");
+
+.checkout__container {
+  font-family: "DM Sans", sans-serif;
+  min-height: 100vh;
+  background: #f5f0ea;
+  padding: 2rem 2.5rem;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.checkout__header__title {
+  font-family: "Playfair Display", serif;
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #1c1610;
+  margin: 0 0 1.8rem 0;
+  padding-left: 1rem;
+  border-left: 4px solid #c8916a;
+}
+
+.checkout__body {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.checkout__left {
+  flex: 2;
+  /* width: 100%; */
+  /* flex: 2; */
+}
+
+.checkout__right {
+  flex: 1;
+  /* position: sticky; */
+  /* top: 84px; */
+  /* width: 70%; */
+  padding: 5px;
+}
+
+@media (max-width: 768px) {
+  .checkout__body {
+    flex-direction: column-reverse;
+  }
+  .checkout__right {
+    position: static;
+    width: 100%;
+  }
+}

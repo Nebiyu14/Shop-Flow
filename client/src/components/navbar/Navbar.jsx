@@ -15,16 +15,16 @@ const Navbar = () => {
 
       <ul className="header__nav__links">
         <li>
-          <Link to={"/"}>Home</Link>
+          <Link to={"/"}>Products</Link>
         </li>
         <li>
-          <Link to={"/success"}>Success</Link>
+          <Link to={"#"}>Orders</Link>
         </li>
         <li>
-          <Link to={"/cancel"}>Cancel</Link>
+          <Link to={"#"}>FAQ</Link>
         </li>
         <li>
-          <Link to={"/cart"}>Cart</Link>
+          <Link to={"#"}>Account</Link>
         </li>
       </ul>
 

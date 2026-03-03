@@ -3,7 +3,7 @@
 /* ── Page ── */
 .cart__page__container {
   font-family: "DM Sans", sans-serif;
-  /* min-height: 100vh; */
+  min-height: 100vh;
   background: #f5f0ea;
   padding: 2rem 2.5rem;
   box-sizing: border-box;

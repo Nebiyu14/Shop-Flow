@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500&display=swap');
+
+.notfound__container {
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+  background: #F5F0EA;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-image:
+    radial-gradient(ellipse at 15% 70%, rgba(200, 145, 106, 0.07) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 15%, rgba(200, 145, 106, 0.05) 0%, transparent 50%);
+}
+
+.notfound__content {
+  background: #ffffff;
+  border: 1px solid #EDE6DC;
+  border-radius: 24px;
+  padding: 3.5rem 3rem;
+  text-align: center;
+  box-shadow: 0 4px 32px rgba(28, 22, 14, 0.07);
+  max-width: 420px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.notfound__code {
+  font-family: 'Playfair Display', serif;
+  font-size: 5.5rem;
+  font-weight: 700;
+  color: #EDE6DC;
+  line-height: 1;
+  margin: 0;
+  letter-spacing: -0.04em;
+}
+
+.notfound__title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1C1610;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.notfound__message {
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: #A89080;
+  margin: 0;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+
+.notfound__btn {
+  display: inline-block;
+  margin-top: 0.6rem;
+  padding: 0.75rem 2rem;
+  background: #C8916A;
+  color: #ffffff;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.notfound__btn:hover {
+  background: #b07850;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(200, 145, 106, 0.35);
+}
+
+.notfound__btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}

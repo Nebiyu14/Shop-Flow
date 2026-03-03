@@ -2,6 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import {
   add_to_cart_logic,
   decrease_quantity,
+  get_total_price,
   increase_quantity,
   itemCount,
   remove_from_cart,
@@ -55,6 +56,11 @@ function CartContext({ children }) {
   //total item in the cart
   const getItemCount = itemCount(cart);
 
+  //clear cart after successful payment
+  const clearCart = () => {
+    setCart([]);
+  };
+
   return (
     <CartData.Provider
       value={{
@@ -64,6 +70,8 @@ function CartContext({ children }) {
         increaseItemQuantity,
         decreaseItemQuantity,
         getItemCount,
+        get_total_price,
+        clearCart,
       }}
     >
       {children}

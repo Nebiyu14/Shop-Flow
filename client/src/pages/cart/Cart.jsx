@@ -12,8 +12,6 @@ function Cart() {
   //total price
   const totalPrice = get_total_price(cart);
 
-  
-
   return (
     <div className="cart__page__container">
       <h2 className="cart__header__title">Your Bag</h2>
@@ -55,16 +53,18 @@ function Cart() {
             <span>Total</span>
             <span>$ {totalPrice.toFixed(2)} </span>
           </div>
-          <button
-            className={
-              cart.length === 0
-                ? "cart__checkout__btn__disabled"
-                : "cart__checkout__btn"
-            }
-            disabled={cart.length === 0}
-          >
-            Proceed to Checkout
-          </button>
+          <Link to={"/checkout"}>
+            <button
+              className={
+                cart.length === 0
+                  ? "cart__checkout__btn__disabled"
+                  : "cart__checkout__btn"
+              }
+              disabled={cart.length === 0}
+            >
+              Proceed to Checkout
+            </button>
+          </Link>
           <Link to="/" className="cart__continue">
             Continue Shopping
           </Link>

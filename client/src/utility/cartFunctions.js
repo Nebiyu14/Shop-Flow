@@ -58,15 +58,16 @@ const decrease_quantity = (singleProduct, prevCartItem) => {
 
 //============================================
 //4. TOTAL PRICE
+//============================================
 const get_total_price = (cart) => {
   return cart.reduce((total, item) => {
     return total + item.price * item.quantity;
   }, 0);
 };
-//============================================
 
 //============================================
 //5. TOTAL NUMBER OF ITEMS => item x quantity
+//============================================
   const itemCount = (cart) => {
     return cart.reduce((total, item) => {
       return total + item.quantity;

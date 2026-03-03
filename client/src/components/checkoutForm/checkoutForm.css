@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500&display=swap");
+
+.checkout__form {
+  background: #ffffff;
+  border: 1px solid #ede6dc;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 4px 24px rgba(28, 22, 14, 0.06);
+  font-family: "DM Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.checkout__form__title {
+  font-family: "Playfair Display", serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1c1610;
+  white-space: nowrap;
+}
+
+.checkout__form__subtitle {
+  font-size: 0.78rem;
+  color: #a89080;
+  margin: -0.6rem 0 0 0;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+/* Stripe placeholder */
+.checkout__stripe__placeholder {
+  background: #f7f2ec;
+  border: 1.5px dashed #c8916a;
+  border-radius: 12px;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+}
+
+.checkout__stripe__placeholder p {
+  font-size: 0.82rem;
+  color: #c8916a;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* error message in payment */
+.checkout__errorMsg {
+  color: red;
+  margin: 0.5rem 0;
+}
+
+/* Place Order button */
+.checkout__button {
+  width: 100%;
+  white-space: nowrap;
+  padding: 0.9rem;
+  background: #c8916a;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.checkout__button:hover {
+  background: #b07850;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(200, 145, 106, 0.35);
+}
+
+.checkout__button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
