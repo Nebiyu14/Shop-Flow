@@ -2,11 +2,9 @@
 
 ## Introduction
 
-This is a full-stack e-commerce web application built with React and Node.js, featuring secure Stripe payment integration using PaymentIntent and PaymentElement.
+This project is a full-stack e-commerce application developed with React and Node.js with integrated Stripe payments using PaymentIntent and the embedded PaymentElement. 
 
-The project demonstrates real-world payment flow handling, frontend-backend communication, and state management architecture designed for scalability.
-
-This project was built as part of my preparation for junior full-stack developer roles.
+The payment process is handled **inside the application**, allowing users to complete checkout without being redirected to a Stripe-hosted page and the user interface is **fully responsive** on desktop, tablet, and mobile devices.
 
 ---
 
@@ -50,7 +48,7 @@ This project was built as part of my preparation for junior full-stack developer
 ### Architecture
 - Separate frontend and backend folders
 - Environment variable management
-- Structured for future authentication and database support
+- Structured for future scalability
 
 ---
 
@@ -67,7 +65,7 @@ This project was built as part of my preparation for junior full-stack developer
 ---
 
 
-## Future Improvements
+## Upcoming Features
 
 Planned next integrations:
 
@@ -80,14 +78,6 @@ Planned next integrations:
 ---
 
 ## How to Run the Project
-1. Clone the Repository
-git clone https://github.com/Nebiyu14/Fullstack-Stripe-Store.git
-cd Fullstack-Stripe-Store
-
-
-
-delete
-## How to Run the Project
 
 > Requirements: Node.js (v16+) and npm
 
@@ -96,12 +86,9 @@ delete
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/Nebiyu14/Shop-Flow.git
-cd Fullstack-Stripe-Store
-```
+https://github.com/Nebiyu14/Shop-Flow.git
 
-Repository link:
-[https://github.com/Nebiyu14/Shop-Flow.git](https://github.com/Nebiyu14/Shop-Flow.git)
+```
 
 ---
 
@@ -127,7 +114,7 @@ npm start
 Backend runs at:
 
 ```
-http://localhost:5000
+http://localhost:3000
 ```
 
 ---
@@ -145,7 +132,7 @@ Create a `.env` file inside the `client/` folder:
 
 ```
 VITE_APP_STRIPE_PUBLIC_KEY=pk_test_your_publishable_key_here
-VITE_BACKEND_URL=http://localhost:5000
+VITE_BACKEND_URL=http://localhost:3000
 ```
 
 Start the frontend:
@@ -157,7 +144,7 @@ npm run dev
 Frontend runs at:
 
 ```
-http://localhost:3000
+http://localhost:5100
 ```
 
 ---
@@ -167,7 +154,7 @@ http://localhost:3000
 Open in your browser:
 
 ```
-http://localhost:3000
+http://localhost:5100
 ```
 
 Use Stripe test card details:
@@ -191,6 +178,5 @@ Steps:
 ### Notes
 
 * Backend must be running before the frontend
-* Do not commit `.env` files to the repository
 * Stripe is in test mode (no real charges)
 * Update ports in `.env` if changed
