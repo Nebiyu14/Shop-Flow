@@ -1,4 +1,4 @@
-# Fullstack Stripe Store
+# Shop-Flow
 
 ## Introduction
 
@@ -66,17 +66,6 @@ This project was built as part of my preparation for junior full-stack developer
 
 ---
 
-## Development Process (Short Overview)
-
-1. Built cart and state management system
-2. Implemented backend server with Stripe integration
-3. Connected frontend checkout flow to backend PaymentIntent
-4. Integrated Stripe PaymentElement
-5. Implemented payment verification on success page
-6. Refactored structure for scalability and clean separation
-
-
----
 
 ## Future Improvements
 
@@ -94,3 +83,114 @@ Planned next integrations:
 1. Clone the Repository
 git clone https://github.com/Nebiyu14/Fullstack-Stripe-Store.git
 cd Fullstack-Stripe-Store
+
+
+
+delete
+## How to Run the Project
+
+> Requirements: Node.js (v16+) and npm
+
+---
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Nebiyu14/Shop-Flow.git
+cd Fullstack-Stripe-Store
+```
+
+Repository link:
+[https://github.com/Nebiyu14/Shop-Flow.git](https://github.com/Nebiyu14/Shop-Flow.git)
+
+---
+
+### 2. Run the Backend (Server)
+
+```bash
+cd server
+npm install
+```
+
+Create a `.env` file inside the `server/` folder:
+
+```
+STRIPE_SECRET_KEY=sk_test_your_secret_key_here
+```
+
+Start the backend server:
+
+```bash
+npm start
+```
+
+Backend runs at:
+
+```
+http://localhost:5000
+```
+
+---
+
+### 3. Run the Frontend (Client)
+
+Open a new terminal window:
+
+```bash
+cd client
+npm install
+```
+
+Create a `.env` file inside the `client/` folder:
+
+```
+VITE_APP_STRIPE_PUBLIC_KEY=pk_test_your_publishable_key_here
+VITE_BACKEND_URL=http://localhost:5000
+```
+
+Start the frontend:
+
+```bash
+npm run dev
+```
+
+Frontend runs at:
+
+```
+http://localhost:3000
+```
+
+---
+
+### 4. Test the Stripe Payment Flow
+
+Open in your browser:
+
+```
+http://localhost:3000
+```
+
+Use Stripe test card details:
+
+```
+4242 4242 4242 4242
+Any future date
+Any CVC
+```
+
+Steps:
+
+1. Add products to cart
+2. Go to checkout
+3. Enter test card details
+4. Submit payment
+5. Confirm the Success page is displayed
+
+---
+
+### Notes
+
+* Backend must be running before the frontend
+* Do not commit `.env` files to the repository
+* Stripe is in test mode (no real charges)
+* Update ports in `.env` if changed
