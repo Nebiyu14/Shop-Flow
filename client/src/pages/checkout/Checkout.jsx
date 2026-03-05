@@ -34,9 +34,14 @@ function Checkout() {
           },
         );
         const data = await response.json();
+        if (!response.ok) {
+          throw new Error(
+            data.details || data.error || "Failed to create payment intent",
+          );
+        }
         setClientSecret(data.clientSecret);
       } catch (error) {
-        console.error("Error creating payment intent: ", error);
+        console.error(error.message);
       }
     };
     fetchClientSecret();

@@ -3,64 +3,88 @@ dotenv.config();
 import express from "express";
 import Stripe from "stripe";
 import cors from "cors";
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+
 
 const app = express();
 
-//middleware
+if (!process.env.STRIPE_SECRET_KEY) {
+  throw new Error("Missing STRIPE_SECRET_KEY in server");
+}
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+
+
+// middleware
 app.use(express.json());
 app.use(cors());
 
-//testing => home page
 app.get("/", (req, res) => {
-  res.send("Backend server is running...");
+  res.status(200).send("Backend server is running...");
 });
 
-//create api endpoint for payment intent
 app.post("/create-payment-intent", async (req, res) => {
   try {
-    //frontend cart data loading here =>
     const cartItems = req.body;
-    if (!cartItems || cartItems.length === 0)
+
+    if (!Array.isArray(cartItems) || cartItems.length === 0) {
       return res.status(400).json({ error: "Cart is empty!" });
-
-    //fetch the product from fakestoreapi for calculating the price
-    const response = await fetch("https://fakestoreapi.com/products");
-
-    if (!response.ok)
-      throw new Error("Failed to fetch the product API in server");
-    console.log("Fetching products from FakeStore API");
-    const products = await response.json();
-
-    // //calculate the total price in here backend
-    let totalPrice = 0;
-    for (let item of cartItems) {
-      const product = products.find((p) => p.id === Number(item.id));
-      console.log("single porduct:", product);
-      if (!product)
-        return res.status(400).json({ error: "Invalid product ID" });
-      totalPrice = totalPrice + product.price * item.quantity;
     }
 
-    //convert to cents
+    const productResponse = await fetch("https://fakestoreapi.com/products");
+
+    if (!productResponse.ok) {
+      return res.status(502).json({ error: "Failed to load products" });
+    }
+
+    const products = await productResponse.json();
+
+    let totalPrice = 0;
+
+    for (const item of cartItems) {
+      const itemId = Number(item?.id);
+      const quantity = Number(item?.quantity);
+
+      if (!Number.isInteger(itemId) || !Number.isInteger(quantity) || quantity <= 0) {
+        return res.status(400).json({ error: "Invalid cart data" });
+      }
+
+      const product = products.find((p) => Number(p.id) === itemId);
+
+      if (!product) {
+        return res.status(400).json({ error: `Invalid product ID: ${itemId}` });
+      }
+
+      const productPrice = Number(product.price);
+      if (!Number.isFinite(productPrice) || productPrice < 0) {
+        return res.status(400).json({ error: `Invalid product price for ID: ${itemId}` });
+      }
+
+      totalPrice += productPrice * quantity;
+    }
+
     const amountInCents = Math.round(totalPrice * 100);
 
-    //create payment intent
+    if (!Number.isInteger(amountInCents) || amountInCents <= 0) {
+      return res.status(400).json({ error: "Invalid total amount" });
+    }
+
     const paymentIntent = await stripe.paymentIntents.create({
       amount: amountInCents,
       currency: "usd",
       automatic_payment_methods: { enabled: true },
     });
-    res.json({
-      clientSecret: paymentIntent.client_secret,
-    });
+
+    return res.status(200).json({ clientSecret: paymentIntent.client_secret });
   } catch (error) {
-    console.log(error);
-    res.status(500).json({ error: "Something went wrong!" });
+    console.error("create-payment-intent error:", error);
+    return res.status(500).json({
+      error: "Something went wrong while creating payment intent",
+      details: error?.message || "Unknown server error",
+    });
   }
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = Number(process.env.PORT) || 3000;
+
 app.listen(PORT, () => {
-  console.log(`server is running at port: ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
