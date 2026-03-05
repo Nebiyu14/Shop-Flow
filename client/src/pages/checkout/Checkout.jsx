@@ -8,10 +8,12 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import { useState } from "react";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const stripePromise = loadStripe(import.meta.env.VITE_APP_STRIPE_PUBLIC_KEY);
 
 function Checkout() {
+  const navigate = useNavigate();
   const { cart } = useCart();
   const [clientSecret, setClientSecret] = useState("");
 
@@ -39,6 +41,10 @@ function Checkout() {
     };
     fetchClientSecret();
   }, []);
+
+  if (cart.length === 0) {
+    navigate("/");
+  }
 
   return (
     <div className="checkout__container">
