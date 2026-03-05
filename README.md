@@ -11,6 +11,7 @@ The payment process is handled **inside the application**, allowing users to com
 ## Live Demo
 
 You can try the app here: [view the website](https://shop-flow-subi.vercel.app/)
+>Note: Backend is hosted on Render's free tier. If the server has been inactive, the first request may take 30–50 seconds to wake up. Subsequent requests will be fast. For production, this would be resolved with an always-on server.
 
 Use Stripe test card details:
 
